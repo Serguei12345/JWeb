@@ -7,20 +7,36 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  	<servlet-name>MainPage</servlet-name>
-  	<servlet-class>com.sdzee.servlets.MainPage</servlet-class>
-  	
-  	<init-param>
-  		<param-name>animal</param-name>
-		<param-value>Coyote</param-value>
-  	</init-param>
+    <description></description>
+    <display-name>Connection</display-name>
+    <servlet-name>Connection</servlet-name>
+    <servlet-class>com.sdzee.bdd.Connection</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>MainPage</servlet-name>
-  	<url-pattern></url-pattern>
+    <servlet-name>Connection</servlet-name>
+    <url-pattern>/Connection</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Inscription</display-name>
+    <servlet-name>Inscription</servlet-name>
+    <servlet-class>com.sdzee.bdd.Inscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Inscription</servlet-name>
+    <url-pattern>/Inscription</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CoreJDBC</display-name>
+    <servlet-name>CoreJDBC</servlet-name>
+    <servlet-class>com.sdzee.bdd.CoreJDBC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoreJDBC</servlet-name>
+    <url-pattern>/CoreJDBC</url-pattern>
   </servlet-mapping>
 </web-app>

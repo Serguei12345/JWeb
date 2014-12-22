@@ -1,0 +1,172 @@
+
+.nav2
+{
+    height: 55px;
+    width: 100%;
+    background: #323232;
+    position: fixed;
+    z-index: 10002;
+}
+
+.nav2_960
+{
+    width: 960px;
+    left: 50%;
+    margin-left: -480px;
+    height: 55px;
+    position: fixed;
+    z-index: 10002;
+}
+
+.nav2_menu_gen
+{
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 17px;
+    font-family: 'Roboto', Arial;
+    display: inline-table;
+}
+
+.nav2_logo
+{
+    width: 480px;
+    margin: auto;
+    top: 80px;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+
+.nav_menu
+{
+    font-size: 18px;
+    color: #ffffff;
+    font-family: 'Roboto', Arial;
+    display: inline-table;
+    margin-right: 10px;
+}
+
+.nav_menu_home
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: 0 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_portfolio
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -16px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_regles
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -32px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_map
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -48px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_faq
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -64px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_boutique
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -80px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_contact
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -96px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_login
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -112px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_troll
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -128px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.nav_menu_epinews
+{
+    background: url('img/icones.png') no-repeat;
+    background-position: -144px 0;
+    margin-right: 5px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+#my_menu > a
+{
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    background-color: #424242;
+    padding: 8px;
+    padding-bottom: 5px;
+    padding-top: 15px;
+    font-family: 'Roboto', Arial;
+}
+
+#my_menu
+{
+    position: relative;
+    z-index: 10000;
+    margin-left: auto;
+    margin-right: auto;
+    width: 650px;
+    min-height: 10px;
+    text-align: right;
+    margin-top: 50px;
+    font-family: 'Roboto', Arial;
+}

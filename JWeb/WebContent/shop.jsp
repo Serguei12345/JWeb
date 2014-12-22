@@ -7,6 +7,6 @@
 <title>Shop</title>
 </head>
 <body>
-	SHOP
+	
 </body>
 </html>

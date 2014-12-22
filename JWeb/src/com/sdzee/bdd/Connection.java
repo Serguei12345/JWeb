@@ -34,7 +34,6 @@ public class Connection extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
 		this.getServletContext().getRequestDispatcher(vue).forward(request,  response);
 		
 	}

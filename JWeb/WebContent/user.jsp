@@ -1,5 +1,6 @@
 <%@page import="com.sdzee.bdd.CoreJDBC"%>
 <%@page import="com.sdzee.bdd.MConnection"%>
+<%@page import="com.sdzee.bdd.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,27 +15,39 @@
 	<%
 		MConnection coreUser = (MConnection)request.getAttribute("MConnection");
 
-		if (coreUser != null)
-			JOptionPane.showConfirmDialog(null, "lol");
 		ArrayList<ArrayList<String>> list = coreUser.getListOfArticles();
 		int counterArticle = 0;
 		int counterArticleElement;
 		int sizeOfArticleElements;
 		int sizeOfArticles = list.size();
-		JOptionPane.showConfirmDialog(null, list.size());
 		while (counterArticle < sizeOfArticles)
 		{
 			counterArticleElement = 0;
 			sizeOfArticleElements = list.get(counterArticle).size();
+			JOptionPane.showConfirmDialog(null, list.get(2).get(2));
 			while (counterArticleElement < sizeOfArticleElements)
 			{
 				out.println(list.get(counterArticle).get(counterArticleElement) + " ");
 				++counterArticleElement;
 			}
+			++counterArticle;
 	%>
 			<br/>
 	<%	
-			++counterArticle;
+			//counterArticle = counterArticle + 1;
+		}
+		
+		User user = coreUser.getUser();
+		String rights = user.getRights();
+		
+		out.println(rights);
+		if (rights.charAt(0) == '1')
+		{
+	%>
+		 <form method="POST" action="AdminManager">
+			<input type="submit" id="submit_admin" name="admin_begin_submit" value="AdminZONE"/>
+		</form>
+	<%
 		}
 	%>
 </body>

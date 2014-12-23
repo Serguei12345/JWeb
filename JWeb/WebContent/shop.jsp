@@ -7,6 +7,5 @@
 <title>Shop</title>
 </head>
 <body>
-	
 </body>
 </html>

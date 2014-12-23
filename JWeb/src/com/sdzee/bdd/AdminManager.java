@@ -6,25 +6,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
- * Servlet implementation class CoreJDBC
+ * Servlet implementation class AdminManager
  */
-
-public class CoreJDBC extends HttpServlet
+public class AdminManager extends HttpServlet
 {
+	private MAdmin mAdmin;
 	private static final long serialVersionUID = 1L;
-    private MConnection mc;
-    
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-	
-    public CoreJDBC()
+    public AdminManager()
     {
         super();
-        mc = new MConnection();
-        // TODO Auto-generated constructor stub
+        this.mAdmin = new MAdmin();
     }
 
 	/**
@@ -39,12 +37,10 @@ public class CoreJDBC extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String userLogin = request.getParameter("login");
-		String userPwd = request.getParameter("password");
-		if (this.mc.connectionToDatabase(userLogin, userPwd) == true)
-			{
-				request.setAttribute("MConnection", this.mc);
-				getServletContext().getRequestDispatcher("/user.jsp").forward(request,response);
-			}
+		if (request.getParameter("admin_begin_submit") != null)
+			getServletContext().getRequestDispatcher("/admin.jsp").forward(request,response);
+		else if (request.getParameter("write_article_submit_name") != null)
+			this.mAdmin.insertArticleInDatabase(request.getParameter("write_article_text_name"), request.getParameter("write_article_title_name"));
 	}
+
 }

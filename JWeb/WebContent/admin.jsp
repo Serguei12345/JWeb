@@ -7,6 +7,10 @@
 <title>Admin</title>
 </head>
 <body>
-
+		<form method="POST" action="AdminManager">
+		<input type="text" id="write_article_title" name="write_article_title_name" value = "Introduisez votre titre ici"/><br/>
+		<input type="text" id="write_article_text" name="write_article_text_name" value = "Introduisez votre texte ici"/><br/>
+		<input type="submit" id="write_article_submit" name="write_article_submit_name" value="Validez votre article"/><br/>
+	</form>
 </body>
 </html>

@@ -39,4 +39,14 @@
     <servlet-name>CoreJDBC</servlet-name>
     <url-pattern>/CoreJDBC</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminManager</display-name>
+    <servlet-name>AdminManager</servlet-name>
+    <servlet-class>com.sdzee.bdd.AdminManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManager</servlet-name>
+    <url-pattern>/AdminManager</url-pattern>
+  </servlet-mapping>
 </web-app>

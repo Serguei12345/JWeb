@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  * Servlet implementation class Inscription
  */
@@ -53,13 +55,17 @@ public class Inscription extends HttpServlet {
 	    	{
 	    		ResultSet rs = statement.executeQuery("SELECT COUNT(login) FROM user;");
 	    		rs.next();
-	    		//rs.get
-	    		String values = " VALUES (1, ";
+	    		rs.last();
+	    		Integer lastRow = rs.getRow() + 1;
+	    		rs.first();
+	    		String increment = lastRow.toString();
+	    		String values = " VALUES (" + increment + ", ";
 	    		values += ("'" + request.getParameter("login") + "', ");
 	    		values += ("'" + request.getParameter("password") + "', ");
 	    		values += ("'" + request.getParameter("email") + "', ");
 	    		values += "'00000', NOW(), TRUE);";
 	    		statement.executeUpdate("INSERT INTO user" + values);
+	    		getServletContext().getRequestDispatcher("/main.jsp").forward(request,response);
 	    	}
 	    }
         catch(Exception e)
@@ -94,13 +100,10 @@ public class Inscription extends HttpServlet {
 		try
 		{
 			String email = request.getParameter("email");
-			String confirmation_email = request.getParameter("email-confirmation");
 			
 			if (email.equals("") == true)
 				return (false);
 			if (this.checkIfEmailIsValid(email) == false)
-				return (false);
-			if (email.equals(confirmation_email) == false)
 				return (false);
 			ResultSet rs = statement.executeQuery("SELECT login FROM user WHERE email='" + email + "';");
 			int counter = 0;

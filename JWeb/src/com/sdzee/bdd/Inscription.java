@@ -51,6 +51,9 @@ public class Inscription extends HttpServlet {
 	    	}
 	    	else
 	    	{
+	    		ResultSet rs = statement.executeQuery("SELECT COUNT(login) FROM user;");
+	    		rs.next();
+	    		//rs.get
 	    		String values = " VALUES (1, ";
 	    		values += ("'" + request.getParameter("login") + "', ");
 	    		values += ("'" + request.getParameter("password") + "', ");

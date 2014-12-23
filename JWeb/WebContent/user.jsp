@@ -1,4 +1,5 @@
 <%@page import="com.sdzee.bdd.CoreJDBC"%>
+<%@page import="com.sdzee.bdd.MConnection"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,11 +12,30 @@
 </head>
 <body>
 	<%
-		CoreJDBC coreUser = (CoreJDBC)request.getAttribute("coreUser");
+		MConnection coreUser = (MConnection)request.getAttribute("MConnection");
 
+		if (coreUser != null)
+			JOptionPane.showConfirmDialog(null, "lol");
 		ArrayList<ArrayList<String>> list = coreUser.getListOfArticles();
-		out.println(list.get(0).get(0));
+		int counterArticle = 0;
+		int counterArticleElement;
+		int sizeOfArticleElements;
+		int sizeOfArticles = list.size();
+		JOptionPane.showConfirmDialog(null, list.size());
+		while (counterArticle < sizeOfArticles)
+		{
+			counterArticleElement = 0;
+			sizeOfArticleElements = list.get(counterArticle).size();
+			while (counterArticleElement < sizeOfArticleElements)
+			{
+				out.println(list.get(counterArticle).get(counterArticleElement) + " ");
+				++counterArticleElement;
+			}
 	%>
-
+			<br/>
+	<%	
+			++counterArticle;
+		}
+	%>
 </body>
 </html>

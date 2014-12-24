@@ -20,11 +20,15 @@
 		int counterArticleElement;
 		int sizeOfArticleElements;
 		int sizeOfArticles = list.size();
+		JOptionPane.showConfirmDialog(null, "LOL");
+		out.println("Nouveaux Articles :");
+	%>		
+		<br/>
+	<%
 		while (counterArticle < sizeOfArticles)
 		{
 			counterArticleElement = 0;
 			sizeOfArticleElements = list.get(counterArticle).size();
-			JOptionPane.showConfirmDialog(null, list.get(2).get(2));
 			while (counterArticleElement < sizeOfArticleElements)
 			{
 				out.println(list.get(counterArticle).get(counterArticleElement) + " ");
@@ -34,7 +38,6 @@
 	%>
 			<br/>
 	<%	
-			//counterArticle = counterArticle + 1;
 		}
 		
 		User user = coreUser.getUser();

@@ -57,10 +57,10 @@ public class MConnection
 		try
 		{
 			listOfArticles.clear();
-			ArrayList<String> elemsToAdd = new ArrayList<String>();
 			ResultSet rs = statement.executeQuery("SELECT title, text, image, date_edit FROM article ORDER BY date_edit DESC;");
 			while (rs.next() == true)
 			{
+				ArrayList<String> elemsToAdd = new ArrayList<String>();
 				elemsToAdd.clear();
 				elemsToAdd.add(rs.getString("title"));
 				elemsToAdd.add(rs.getString("text"));

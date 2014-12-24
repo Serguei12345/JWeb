@@ -47,8 +47,16 @@
 		if (rights.charAt(0) == '1')
 		{
 	%>
-		 <form method="POST" action="AdminManager">
+		<form method="POST" action="AdminManager">
 			<input type="submit" id="submit_admin" name="admin_begin_submit" value="AdminZONE"/>
+		</form>
+		
+		<form method="POST" action="ArticlesReviews">
+			<input type="submit" id="submit_articles" name="articles_submit" value="Voir les articles"/>
+		</form>
+		
+		<form method="POST" action="ArticlesReviews">
+			<input type="submit" id="submit_reviews" name="reviews_submit" value="Voir les reviews"/>
 		</form>
 	<%
 		}

@@ -49,4 +49,14 @@
     <servlet-name>AdminManager</servlet-name>
     <url-pattern>/AdminManager</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticlesReviews</display-name>
+    <servlet-name>ArticlesReviews</servlet-name>
+    <servlet-class>ArticlesReviews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticlesReviews</servlet-name>
+    <url-pattern>/ArticlesReviews</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -40,6 +40,10 @@ public class AdminManager extends HttpServlet
 			getServletContext().getRequestDispatcher("/admin.jsp").forward(request,response);
 		else if (request.getParameter("write_article_submit_name") != null)
 			this.mAdmin.insertArticleInDatabase(request.getParameter("write_article_text_name"), request.getParameter("write_article_title_name"));
+		/*else if (request.getParameter("") != null)
+			this.mAdmin.insertReviewInDatabase(request.getParameter("write_review_text_name"), request.getParameter("write_review_title_name"));
+		else if (request.getParameter("") != null)
+			this.mAdmin.getRights(request.getParameter("write_article_text_name"), request.getParameter("write_article_title_name"));*/
 	}
 
 }

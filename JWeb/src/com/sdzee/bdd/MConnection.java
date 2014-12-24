@@ -56,9 +56,11 @@ public class MConnection
 	{
 		try
 		{
+			int counter = 0;
 			listOfArticles.clear();
 			ResultSet rs = statement.executeQuery("SELECT title, text, image, date_edit FROM article ORDER BY date_edit DESC;");
-			while (rs.next() == true)
+			
+			while (rs.next() == true && counter < 10)
 			{
 				ArrayList<String> elemsToAdd = new ArrayList<String>();
 				elemsToAdd.clear();
@@ -70,6 +72,7 @@ public class MConnection
 				elemsToAdd.add(dateToAdd.toString());			
 				elemsToAdd.add(timeToAdd.toString());
 				listOfArticles.add(elemsToAdd);
+				++counter;
 			}
 		}
 		catch(Exception e)

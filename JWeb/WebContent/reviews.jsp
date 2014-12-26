@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Reviews</title>
 </head>
 <body>
 	<%
@@ -22,7 +22,7 @@
 			<% out.println("Title : " + reviewToUse.getTitle()); %> <br/> 
 			<% out.println("Content : " + reviewToUse.getText()); %> <br/>
 			<% out.println("Product : " + reviewToUse.getObjectName()); %> <br/> 
-			<% out.println("Written by : " + reviewToUse.getAuthor() + " at " + reviewToUse.getDateOfEdition() + " :: " + reviewToUse.getTimeOfEdition()); %> <br/> <br/>
+			<% out.println("Published by : " + reviewToUse.getAuthor() + " at " + reviewToUse.getDateOfEdition() + " :: " + reviewToUse.getTimeOfEdition()); %> <br/> <br/>
 			<% ++counter;
 		}
 	%>

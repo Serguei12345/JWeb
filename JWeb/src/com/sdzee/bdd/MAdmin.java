@@ -28,8 +28,8 @@ public class MAdmin
 			String lastRowIncrement = lastRow.toString();
 			String id_author = ((Integer)user.getId()).toString();
 			float price = Float.parseFloat(priceString);
-			sqlRequest = "INSERT into product VALUES (" + lastRowIncrement + ", '" + name + "', NOW(), FALSE, 0, 0, "
-						+ id_author + ", '" + description + "', " + price + ");";
+			sqlRequest = "INSERT into product (id_product, name, date_publication, is_bought, id_publisher, description, price) VALUES ("
+						+ lastRowIncrement + ", '" + name + "', NOW(), FALSE, " + id_author + ", '" + description + "', " + price + ");";
 			statement.executeUpdate(sqlRequest);
 		}
 		catch (ClassNotFoundException | SQLException e)

@@ -7,11 +7,12 @@ public class Product
 	private java.sql.Date datePublication;
 	private java.sql.Time timePublication;
 	private boolean isBought;
-	private int idBuyer;
+	private String loginBuyer;
 	private java.sql.Date dateOfBuy;
 	private java.sql.Time timeOfBuy;
-	private int idPublisher;
+	private String loginPublisher;
 	private String description;
+	private float price;
 	
 	Product()
 	{
@@ -19,69 +20,75 @@ public class Product
 	}
 	
 	Product(int idProductToSet, String nameToSet, java.sql.Date dpToSet,
-			java.sql.Time tpToSet, boolean ibToSet, int idBuyerToSet,
-			java.sql.Date dbToSet, java.sql.Time tbToSet, int iPToSet,
-			String descriptionToSet)
+			java.sql.Time tpToSet, boolean ibToSet, String loginBuyerToSet,
+			java.sql.Date dbToSet, java.sql.Time tbToSet, String loginPublisherToSet,
+			String descriptionToSet, float priceToSet)
 	{
 		this.idProduct = idProductToSet;
 		this.name = nameToSet;
 		this.datePublication = dpToSet;
 		this.timePublication = tpToSet;
 		this.isBought = ibToSet;
-		this.idBuyer = idBuyerToSet;
+		this.loginBuyer = loginBuyerToSet;
 		this.dateOfBuy = dbToSet;
 		this.timeOfBuy = tbToSet;
-		this.idPublisher = iPToSet;
+		this.loginPublisher = loginPublisherToSet;
 		this.description = descriptionToSet;
+		this.price = priceToSet;
 	}
 	
-	int getIdProduct()
+	public int getIdProduct()
 	{
 		return (this.idProduct);
 	}
 	
-	String getName()
+	public String getName()
 	{
 		return (this.name);
 	}
 	
-	java.sql.Date getDateOfPublication()
+	public java.sql.Date getDateOfPublication()
 	{
 		return (this.datePublication);
 	}
 	
-	java.sql.Time getTimeOfPublication()
+	public java.sql.Time getTimeOfPublication()
 	{
 		return (this.timePublication);
 	}
 	
-	boolean getIsBought()
+	public boolean getIsBought()
 	{
 		return (this.isBought);
 	}
 	
-	int getIdBuyer()
+	public String getLoginBuyer()
 	{
-		return (this.idBuyer);
+		return (this.loginBuyer);
 	}
 
-	java.sql.Date getDateOfBuy()
+	public java.sql.Date getDateOfBuy()
 	{
 		return (this.dateOfBuy);
 	}
 	
-	java.sql.Time getTimeOfBuy()
+	public java.sql.Time getTimeOfBuy()
 	{
 		return (this.timeOfBuy);
 	}
 	
-	int getIdPublisher()
+	public String getLoginPublisher()
 	{
-		return (this.idPublisher);
+		return (this.loginPublisher);
 	}
 	
-	String getDescription()
+	public String getDescription()
 	{
 		return (this.description);
+	}
+	
+	public float getPrice()
+	{
+		return (this.price);
 	}
 }

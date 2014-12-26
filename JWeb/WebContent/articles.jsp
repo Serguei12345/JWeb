@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Articles</title>
 </head>
 <body>
 	<%
@@ -21,7 +21,7 @@
 			Article articleToUse = articlesList.get(counter); %> <br/> 
 			<% out.println("Title : " + articleToUse.getTitle()); %> <br/> 
 			<% out.println("Content : " + articleToUse.getText()); %> <br/> 
-			<% out.println("Written by : " + articleToUse.getAuthor() + " at " + articleToUse.getDateOfEdition() + " :: " + articleToUse.getTimeOfEdition()); %> <br/> <br/>
+			<% out.println("Published by : " + articleToUse.getAuthor() + " at " + articleToUse.getDateOfEdition() + " :: " + articleToUse.getTimeOfEdition()); %> <br/> <br/>
 			<% ++counter;
 		}
 	%>

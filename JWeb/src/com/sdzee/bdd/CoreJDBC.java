@@ -45,12 +45,14 @@ public class CoreJDBC extends HttpServlet
 		String userPwd = request.getParameter("password");
 			
 		if (this.mc.connectionToDatabase(userLogin, userPwd) == true)
-			{
-				HttpSession session = request.getSession();
+		{
+			HttpSession session = request.getSession();
+			if (session.getAttribute("MConnection") == null)
 				session.setAttribute("MConnection", this.mc);
-			
+
+			if (session.getAttribute("userOfSession") == null)
 				session.setAttribute("userOfSession", this.mc.getUser());
-				getServletContext().getRequestDispatcher("/user.jsp").forward(request,response);
-			}
+			getServletContext().getRequestDispatcher("/user.jsp").forward(request,response);
+		}
 	}
 }

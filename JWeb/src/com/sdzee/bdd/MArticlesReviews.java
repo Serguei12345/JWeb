@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 public class MArticlesReviews
 {
 	ArrayList<Article>	listOfArticles;
@@ -105,11 +103,10 @@ public class MArticlesReviews
 				
 				String author = this.searchNameOfLoginById(idAuthor, connexion);
 				String productName = this.searchNameOfProductById(idProduct, connexion);
-				JOptionPane.showConfirmDialog(null, author + "   " + productName);
 				if (author.length() > 0 && productName.length() > 0)
 				{
-					Review articleToAdd = new Review(idArticle, title, text, image, date, time, author, productName);
-					this.listOfReviews.add(articleToAdd);
+					Review reviewToAdd = new Review(idArticle, title, text, image, date, time, author, productName);
+					this.listOfReviews.add(reviewToAdd);
 				}
 			}
 		}

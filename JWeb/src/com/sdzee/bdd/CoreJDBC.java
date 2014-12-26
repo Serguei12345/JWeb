@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  * Servlet implementation class CoreJDBC
@@ -41,9 +43,13 @@ public class CoreJDBC extends HttpServlet
 	{
 		String userLogin = request.getParameter("login");
 		String userPwd = request.getParameter("password");
+			
 		if (this.mc.connectionToDatabase(userLogin, userPwd) == true)
 			{
-				request.setAttribute("MConnection", this.mc);
+				HttpSession session = request.getSession();
+				session.setAttribute("MConnection", this.mc);
+			
+				session.setAttribute("userOfSession", this.mc.getUser());
 				getServletContext().getRequestDispatcher("/user.jsp").forward(request,response);
 			}
 	}

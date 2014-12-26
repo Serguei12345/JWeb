@@ -36,6 +36,17 @@ public class User
 		}
 	}
 	
+	User(User userToSet)
+	{
+		this.login = userToSet.getLogin();
+		this.password = userToSet.getPassword();
+		this.rights = userToSet.getRights();
+		this.id = userToSet.getId();
+		this.lastConnection = userToSet.getLastConnection();
+		this.lCT = userToSet.getLastConnectionTime();
+		this.is_connected = userToSet.getConnectionState();
+	}
+	
 	public String getLogin()
 	{
 		return (this.login);
@@ -51,7 +62,7 @@ public class User
 		return (this.rights);
 	}
 	
-	public int getid()
+	public int getId()
 	{
 		return (this.id);
 	}

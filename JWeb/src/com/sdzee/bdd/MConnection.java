@@ -41,6 +41,8 @@ public class MConnection
 			{
 				this.userOfConnection = new User(rs);
 				this.articleActions(statement);
+				
+				statement.executeUpdate("UPDATE user SET is_connected=TRUE WHERE login='" + userLogin + "';");
 				return (true);
 			}
 			return (false);

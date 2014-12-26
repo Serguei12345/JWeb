@@ -1,6 +1,7 @@
 <%@page import="com.sdzee.bdd.CoreJDBC"%>
 <%@page import="com.sdzee.bdd.MConnection"%>
 <%@page import="com.sdzee.bdd.User"%>
+<%@page import="com.sdzee.bdd.AdminManager"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,14 +14,15 @@
 </head>
 <body>
 	<%
-		MConnection coreUser = (MConnection)request.getAttribute("MConnection");
+		MConnection coreUser = (MConnection)session.getAttribute("MConnection");
 
 		ArrayList<ArrayList<String>> list = coreUser.getListOfArticles();
 		int counterArticle = 0;
 		int counterArticleElement;
 		int sizeOfArticleElements;
 		int sizeOfArticles = list.size();
-		JOptionPane.showConfirmDialog(null, "LOL");
+		if (sizeOfArticles > 5)
+			sizeOfArticles = 5;
 		out.println("Nouveaux Articles :");
 	%>		
 		<br/>

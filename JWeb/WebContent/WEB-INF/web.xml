@@ -53,10 +53,20 @@
     <description></description>
     <display-name>ArticlesReviews</display-name>
     <servlet-name>ArticlesReviews</servlet-name>
-    <servlet-class>ArticlesReviews</servlet-class>
+    <servlet-class>com.sdzee.bdd.ArticlesReviews</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ArticlesReviews</servlet-name>
     <url-pattern>/ArticlesReviews</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProductManager</display-name>
+    <servlet-name>ProductManager</servlet-name>
+    <servlet-class>com.sdzee.bdd.ProductManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductManager</servlet-name>
+    <url-pattern>/ProductManager</url-pattern>
   </servlet-mapping>
 </web-app>

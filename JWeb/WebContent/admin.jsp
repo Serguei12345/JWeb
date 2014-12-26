@@ -29,6 +29,7 @@
 		<form method="POST" action="AdminManager">
 			<input type="text" id="write_product_name_set" name="write_product_name_set_name" value="Introduisez le nom du produit_ici"/><br/>
 			<input type="text" id="write_product_description_set" name="write_product_description_set_name" value="Introduisez la description du produit ici"/><br/>
+			<input type="text" id="write_product_price_set" name="write_product_price_set_name" value="Introduisez le prix du produit ici"/><br/>
 			<input type="submit" id="write_product_submit" name="write_product_submit_name" value="Validez votre produit"/><br/>
 		</form>
 		

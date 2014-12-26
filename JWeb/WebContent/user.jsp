@@ -2,6 +2,7 @@
 <%@page import="com.sdzee.bdd.MConnection"%>
 <%@page import="com.sdzee.bdd.User"%>
 <%@page import="com.sdzee.bdd.AdminManager"%>
+<%@page import="com.sdzee.bdd.ArticlesReviews"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -34,12 +35,11 @@
 			while (counterArticleElement < sizeOfArticleElements)
 			{
 				out.println(list.get(counterArticle).get(counterArticleElement) + " ");
+				out.println("");
 				++counterArticleElement;
 			}
-			++counterArticle;
-	%>
-			<br/>
-	<%	
+			++counterArticle; %> <br/> 
+		<%
 		}
 		
 		User user = coreUser.getUser();
@@ -59,6 +59,10 @@
 		
 		<form method="POST" action="ArticlesReviews">
 			<input type="submit" id="submit_reviews" name="reviews_submit" value="Voir les reviews"/>
+		</form>
+		
+		<form method="POST" action="ProductManager">
+			<input type="submit" id="submit_products" name="products_submit" value="Voir les produits disponibles"/>
 		</form>
 	<%
 		}

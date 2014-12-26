@@ -52,14 +52,14 @@ public class AdminManager extends HttpServlet
 		else if (request.getParameter("write_rights_submit") != null)
 			this.mAdmin.setRightsOfUser(request.getParameter("write_login_set_name"), request.getParameter("write_rights_set_name"), user);
 		else if (request.getParameter("write_product_submit_name") != null)
-			this.mAdmin.insertProduct(request.getParameter("write_product_name_set_name"), request.getParameter("write_product_description_set_name"), user);
+			this.mAdmin.insertProduct(request.getParameter("write_product_name_set_name"), request.getParameter("write_product_description_set_name"),
+					request.getParameter("write_product_price_set_name"), user);
 		else if (request.getParameter("go_to_user_name") != null)
 		{
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/user.jsp");
 			if (dispatcher == null)
 				JOptionPane.showConfirmDialog(null, "Step1");
 			dispatcher.forward(request, response);
-			//getServletContext().getRequestDispatcher("/user.jsp").forward(request,response);
 		}
 	}
 

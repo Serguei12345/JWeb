@@ -13,22 +13,23 @@ public class MAdmin
 		
 	}
 	
-	void insertProduct(String name, String description, User user)
+	void insertProduct(String name, String description, String priceString, User user)
 	{
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT title FROM article;");
+			ResultSet rs = statement.executeQuery("SELECT name FROM product;");
 			
 			String sqlRequest = "";
 			rs.last();
 			Integer lastRow = rs.getRow() + 1;
 			String lastRowIncrement = lastRow.toString();
 			String id_author = ((Integer)user.getId()).toString();
+			float price = Float.parseFloat(priceString);
 			sqlRequest = "INSERT into product VALUES (" + lastRowIncrement + ", '" + name + "', NOW(), FALSE, 0, 0, "
-						+ id_author + ", '" + description + "');";
+						+ id_author + ", '" + description + "', " + price + ");";
 			statement.executeUpdate(sqlRequest);
 		}
 		catch (ClassNotFoundException | SQLException e)

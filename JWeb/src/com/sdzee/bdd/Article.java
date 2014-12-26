@@ -2,24 +2,38 @@ package com.sdzee.bdd;
 
 public class Article
 {
-	private String title;
-	private String text;
-	private java.sql.Date dateOfEdition;
-	private java.sql.Time timeOfEdition;
-	private String author;
+	protected int idArticle;
+	protected String title;
+	protected String text;
+	protected String image;
+	protected java.sql.Date dateOfEdition;
+	protected java.sql.Time timeOfEdition;
+	protected String author;
 	
 	public Article() {};
 	
-	public Article(String titleToSet, String textToSet, java.sql.Date dateOfEditionToSet,
+	public Article(int idArticleToSet, String titleToSet, String textToSet, String imageToSet, java.sql.Date dateOfEditionToSet,
 			java.sql.Time timeOfEditionToSet, String authorToSet)
 	{
+		this.idArticle = idArticleToSet;
 		this.title = titleToSet;
 		this.text = textToSet;
+		this.image = imageToSet;
 		this.dateOfEdition = dateOfEditionToSet;
 		this.timeOfEdition = timeOfEditionToSet;
 		this.author = authorToSet;
 	}
 
+	public String getImage()
+	{
+		return (this.image);
+	}
+	
+	public int getIdArticle()
+	{
+		return (this.idArticle);
+	}
+	
 	public String getTitle()
 	{
 		return (this.title);

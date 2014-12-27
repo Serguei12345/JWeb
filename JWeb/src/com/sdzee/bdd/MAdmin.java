@@ -80,7 +80,7 @@ public class MAdmin
 			String id_product = this.getIdOfProductByHisName(statement, productName);
 			if (id_product.length() > 0)
 			{
-				sqlRequest += "INSERT into review VALUES (" + lastRowIncrement + ", " + id_author + ", '" + title + "', '"
+				sqlRequest += "INSERT INTO review VALUES (" + lastRowIncrement + ", " + id_author + ", '" + title + "', '"
 						+ text + "', 'image', " + id_product + ", NOW());";
 				JOptionPane.showConfirmDialog(null, sqlRequest);
 				statement.executeUpdate(sqlRequest);
@@ -122,6 +122,42 @@ public class MAdmin
 			
 			String sqlRequest = "";
 			sqlRequest += "UPDATE user SET rights='" + rightsToSet + "' WHERE login='" + login + "';";
+			statement.executeUpdate(sqlRequest);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	void setCreditsOfUser(String login, String creditsToSet, User user)
+	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
+			java.sql.Statement statement = connexion.createStatement();
+			
+			String sqlRequest = "";
+			sqlRequest += "UPDATE user SET credit=" + creditsToSet + " WHERE login='" + login + "';";
+			statement.executeUpdate(sqlRequest);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	void setQuantityOfProduct(String productName, String quantityOfProduct, User user)
+	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
+			java.sql.Statement statement = connexion.createStatement();
+			
+			String sqlRequest = "";
+			sqlRequest += "UPDATE product SET quantity=" + quantityOfProduct + " WHERE name='" + productName + "';";
 			statement.executeUpdate(sqlRequest);
 		}
 		catch (Exception e)

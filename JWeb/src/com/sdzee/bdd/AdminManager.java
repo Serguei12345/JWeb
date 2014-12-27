@@ -51,6 +51,10 @@ public class AdminManager extends HttpServlet
 					request.getParameter("write_review_product_name"), user);
 		else if (request.getParameter("write_rights_submit") != null)
 			this.mAdmin.setRightsOfUser(request.getParameter("write_login_set_name"), request.getParameter("write_rights_set_name"), user);
+		else if (request.getParameter("write_credit_submit") != null)
+			this.mAdmin.setCreditsOfUser(request.getParameter("write_login_set_name"), request.getParameter("write_credit_set_name"), user);
+		else if (request.getParameter("write_product_quantity_submit_name") != null)
+			this.mAdmin.setQuantityOfProduct(request.getParameter("write_product_name_set_name"), request.getParameter("write_product_quantity_set_name"), user);
 		else if (request.getParameter("write_product_submit_name") != null)
 			this.mAdmin.insertProduct(request.getParameter("write_product_name_set_name"), request.getParameter("write_product_description_set_name"),
 					request.getParameter("write_product_price_set_name"), user);

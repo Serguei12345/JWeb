@@ -17,15 +17,21 @@
 		ArrayList<Product> productsList = mPM.getListOfProducts();
 		int counter = 0;
 		int productsListSize = productsList.size();
-		JOptionPane.showConfirmDialog(null, productsListSize);
 		while (counter < productsListSize)
 		{
 			Product productToUse = productsList.get(counter); %> <br/> 
-			<% out.println("Name : " + productToUse.getName()); %> <br/> 
+			<% out.println("Produit : " + productToUse.getName()); %> <br/> 
 			<% out.println("Description : " + productToUse.getDescription()); %> <br/>
-			<% out.println("Price : " + productToUse.getPrice()); %> <br/> 
-			<% out.println("Published by : " + productToUse.getLoginPublisher() + " at " + productToUse.getDateOfPublication() + " :: " + productToUse.getTimeOfPublication()); %> <br/> <br/>
-			<% ++counter;
+			<% out.println("Prix : " + productToUse.getPrice() + " $"); %> <br/>
+			<% out.println("Quantité : " + productToUse.getQuantity()); %> <br/>
+			<% out.println("Publié par : " + productToUse.getLoginPublisher() + " at " + productToUse.getDateOfPublication() + " :: " + productToUse.getTimeOfPublication()); %> <br/> <br/>
+			<form method="POST" action="ProductManager">
+				<input type="submit" id="buy_item" name=<%=productToUse.getName()%> value="Valider l'achat"/>
+			</form>
+			
+			<% Integer li = counter;
+				session.setAttribute("product" + li.toString(), productToUse.getName());
+			++counter;
 		}
 	%>
 </body>

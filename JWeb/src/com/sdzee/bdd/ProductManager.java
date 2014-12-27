@@ -39,11 +39,46 @@ public class ProductManager extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		this.mPM.searchProducts();
-		HttpSession session = request.getSession();
-		if (session.getAttribute("MProductManager") == null)
-			session.setAttribute("MProductManager", this.mPM);
-		getServletContext().getRequestDispatcher("/products.jsp").forward(request,response);
+		String str = "";
+		if (request.getParameter("products_submit") != null)
+		{
+			this.mPM.searchProducts();
+			HttpSession session = request.getSession();
+			if (session.getAttribute("MProductManager") == null)
+				session.setAttribute("MProductManager", this.mPM);
+			getServletContext().getRequestDispatcher("/products.jsp").forward(request,response);
+		}
+		else if (request.getParameter("bought_products_submit_name") != null)
+		{
+			HttpSession session = request.getSession();
+			User user = new User((User)session.getAttribute("userOfSession"));
+			this.mPM.searchBoughtProducts(user);
+			if (session.getAttribute("MProductManager") == null)
+				session.setAttribute("MProductManager", this.mPM);
+			getServletContext().getRequestDispatcher("/boughtProducts.jsp").forward(request,response);
+		}
+		else
+		{
+			User user = new User((User)request.getSession().getAttribute("userOfSession"));
+			str = this.isBuyButtonPressed(request);
+			if (str.length() > 0)
+			{
+				this.mPM.buyProductForUser(str, user);
+			}
+		}
+		
 	}
 
+	String isBuyButtonPressed(HttpServletRequest request)
+	{
+		Integer counter = 0;
+		
+		while (counter < 1000)
+		{
+			if (request.getParameter("product" + counter.toString()) != null)
+				return ("product" + counter.toString());
+			++counter;
+		}
+		return ("");
+	}
 }

@@ -35,7 +35,7 @@ public class MConnection
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
     	
-			ResultSet rs = statement.executeQuery("SELECT login, password, rights, last_connection, is_connected, id_user FROM user WHERE login='" + userLogin + "' AND password='" + userPwd + "';");
+			ResultSet rs = statement.executeQuery("SELECT login, password, rights, last_connection, is_connected, id_user, credit FROM user WHERE login='" + userLogin + "' AND password='" + userPwd + "';");
 			
 			if (rs.next() == true)
 			{

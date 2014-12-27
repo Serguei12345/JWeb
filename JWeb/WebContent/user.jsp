@@ -16,16 +16,20 @@
 <body>
 	<%
 		MConnection coreUser = (MConnection)session.getAttribute("MConnection");
-
+		User user = (User)coreUser.getUser();
+		Float credit = user.getCredit();
+	
+		out.println("Bonjour " + user.getLogin() + ". Vous disposez de " + credit + " $."); %> <br/> 
+	<%
 		ArrayList<ArrayList<String>> list = coreUser.getListOfArticles();
 		int counterArticle = 0;
 		int counterArticleElement;
-		int sizeOfArticleElements;
+			int sizeOfArticleElements;
 		int sizeOfArticles = list.size();
 		if (sizeOfArticles > 5)
 			sizeOfArticles = 5;
-		out.println("Nouveaux Articles :");
-	%>		
+		out.println("Nouveaux Articles :");	
+	%>	
 		<br/>
 	<%
 		while (counterArticle < sizeOfArticles)
@@ -39,16 +43,16 @@
 				++counterArticleElement;
 			}
 			++counterArticle; %> <br/> 
-		<%
+	<%
 		}
-		
-		User user = coreUser.getUser();
+
 		String rights = user.getRights();
-		
+	
 		out.println(rights);
 		if (rights.charAt(0) == '1')
-		{
+		{	
 	%>
+
 		<form method="POST" action="AdminManager">
 			<input type="submit" id="submit_admin" name="admin_begin_submit" value="AdminZONE"/>
 		</form>
@@ -63,6 +67,10 @@
 		
 		<form method="POST" action="ProductManager">
 			<input type="submit" id="submit_products" name="products_submit" value="Voir les produits disponibles"/>
+		</form>
+		
+		<form method="POST" action="ProductManager">
+			<input type="submit" id="bought_products_submit" name="bought_products_submit_name" value="Voir vos achats"/>
 		</form>
 	<%
 		}

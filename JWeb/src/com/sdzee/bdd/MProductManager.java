@@ -7,21 +7,54 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 public class MProductManager
 {
 	private ArrayList<Product> listOfProducts;
-	
+	private ArrayList<BoughtProduct> listOfBoughtProducts;
 	
 	public ArrayList<Product> getListOfProducts()
 	{
 		return (this.listOfProducts);
 	}
 	
+	public ArrayList<BoughtProduct> getListOfBoughtProducts()
+	{
+		return (this.listOfBoughtProducts);
+	}
+	
 	MProductManager()
 	{
 		this.listOfProducts = new ArrayList<Product>();
+		this.listOfBoughtProducts = new ArrayList<BoughtProduct>();
+	}
+	
+	void searchBoughtProducts(User user)
+	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
+			Statement st = connexion.createStatement();
+			Integer itu = user.getId();
+			ResultSet rs = st.executeQuery("SELECT id_buy, id_product, id_user, date_bought FROM bought_products WHERE id_user=" + itu.toString() + ";");
+			
+			this.listOfBoughtProducts.clear();
+			while (rs.next() == true)
+			{
+				Integer idBuy= rs.getInt("id_buy");
+				Integer idProduct = rs.getInt("id_product");
+				Integer idUser = rs.getInt("id_user");
+				java.sql.Date dateBought= rs.getDate("date_bought");
+				String name = this.findItemNameByHisId(idProduct, connexion);
+				BoughtProduct boughtProduct = new BoughtProduct(idBuy, idProduct, idUser, dateBought, name);
+				this.listOfBoughtProducts.add(boughtProduct);
+			}
+
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	void searchProducts()
@@ -31,7 +64,7 @@ public class MProductManager
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			Statement st = connexion.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id_product, name, date_publication, is_bought, id_buyer, date_of_buy, id_publisher, description, price FROM product");
+			ResultSet rs = st.executeQuery("SELECT id_product, name, date_publication, id_publisher, description, price, quantity FROM product");
 			
 			this.listOfProducts.clear();
 			while (rs.next() == true)
@@ -40,21 +73,15 @@ public class MProductManager
 				String name = rs.getString("name");
 				java.sql.Date datePublication = rs.getDate("date_publication");
 				java.sql.Time timePublication = rs.getTime("date_publication");
-				boolean isBought = rs.getBoolean("is_bought");
-				int idBuyer = rs.getInt("id_buyer");
-				java.sql.Date dateBuy = rs.getDate("date_of_buy");
-				java.sql.Time timeBuy = rs.getTime("date_of_buy");
 				int idPublisher = rs.getInt("id_publisher");
 				String description = rs.getString("description");
 				float price = rs.getFloat("price");
+				int quantity = rs.getInt("quantity");
 				
-				String loginBuyer = this.searchLoginById(idBuyer, connexion);
 				String loginPublisher = this.searchLoginById(idPublisher, connexion);
-				JOptionPane.showConfirmDialog(null, loginBuyer + "   " + loginPublisher);
 				if (loginPublisher.length() > 0)
 				{
-					Product productToAdd = new Product(idArticle, name, datePublication, timePublication, isBought,
-													loginBuyer, dateBuy, timeBuy, loginPublisher, description, price);
+					Product productToAdd = new Product(idArticle, name, datePublication, timePublication, loginPublisher, description, price, quantity);
 					this.listOfProducts.add(productToAdd);
 				}
 			}
@@ -78,9 +105,159 @@ public class MProductManager
 		}
 		catch (SQLException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return (str);
+	}
+	
+	void buyProductForUser(String nameOfItem, User user)
+	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
+			Statement st = connexion.createStatement();
+
+			this.buyItemInsertInBoughtItems(nameOfItem, user, st);
+			this.buyItemReduceQuantityOfItems(nameOfItem, st);
+			this.buyItemReduceUserCredits(user, nameOfItem, st);
+		}
+		catch (ClassNotFoundException | SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	void buyItemInsertInBoughtItems(String nameOfItem, User user, Statement statement)
+	{
+		try
+		{
+			Integer idProduct = this.buyItemFindIdOfProductByName(nameOfItem, statement);
+			Integer idUser = user.getId();
+			ResultSet rs = statement.executeQuery("SELECT id_buy FROM bought_products;");
+			rs.last();
+			Integer lastRow = rs.getRow() + 1;
+			statement.executeUpdate("INSERT INTO bought_products VALUES (" + lastRow.toString() + ", " + idProduct.toString() + ", " + idUser.toString() + ", NOW());");
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	int buyItemFindIdOfProductByName(String nameOfItem, Statement statement)
+	{
+		int intToRet = 0;
+		
+		try
+		{
+			String itu = nameOfItem;
+			ResultSet rs = statement.executeQuery("SELECT id_product FROM product WHERE name='" + itu + "';");
+			if (rs.next() == true)
+				intToRet = rs.getInt("id_product");
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (intToRet);
+	}
+	
+	String findItemNameByHisId(int itemId, Connection connexion)
+	{
+		String strToRet = "";
+		try
+		{
+			Integer itu = itemId;
+			Statement statement = connexion.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT name FROM product WHERE id_product=" + itu.toString() + ";");
+			if (rs.next() == true)
+				strToRet = rs.getString("name");
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (strToRet);
+	}
+	
+	float buyItemFindPriceOfProductByName(String nameOfItem, Statement statement)
+	{
+		float intToRet = 0;
+		
+		try
+		{
+			String itu = nameOfItem;
+			ResultSet rs = statement.executeQuery("SELECT price FROM product WHERE name='" + itu + "';");
+			if (rs.next() == true)
+				intToRet = rs.getInt("price");
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (intToRet);
+	}
+	
+	float buyItemFindCreditsOfUserByLogin(String loginOfUser, Statement statement)
+	{
+		float intToRet = 0;
+		
+		try
+		{
+			String itu = loginOfUser;
+			ResultSet rs = statement.executeQuery("SELECT credit FROM user WHERE login='" + itu + "';");
+			if (rs.next() == true)
+				intToRet = rs.getInt("credit");
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (intToRet);
+	}
+	
+	void buyItemReduceQuantityOfItems(String nameOfItem, Statement statement)
+	{
+		try
+		{
+			Integer idProduct = this.buyItemFindIdOfProductByName(nameOfItem, statement);
+			ResultSet rs = statement.executeQuery("SELECT quantity FROM product WHERE id_product=" + idProduct.toString() + ";");
+			
+			if (rs.next() == true)
+			{
+				Integer quantity = rs.getInt("quantity") - 1;
+				String sqlRequest = "UPDATE product SET quantity=" + quantity.toString() + " WHERE id_product=" + idProduct.toString() + ";";
+				statement.executeUpdate(sqlRequest);
+			}
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	void buyItemReduceUserCredits(User user, String nameOfItem, Statement statement)
+	{
+		try
+		{
+			Float priceOfItem = this.buyItemFindPriceOfProductByName(nameOfItem, statement);
+			Float creditsOfUser = this.buyItemFindCreditsOfUserByLogin(user.getLogin(), statement);
+			
+			creditsOfUser -= priceOfItem;
+			String sqlRequest = "UPDATE user SET credit=" + creditsOfUser.toString() + " WHERE login='" + user.getLogin() + "';";
+			statement.executeUpdate(sqlRequest);
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -12,6 +12,7 @@ public class User
 	private java.sql.Date lastConnection;
 	private java.sql.Time lCT;
 	private boolean is_connected;
+	private float credit;
 	
 	User()
 	{
@@ -29,6 +30,7 @@ public class User
 			this.lastConnection = rs.getDate("last_connection");
 			this.lCT = rs.getTime("last_connection");
 			this.is_connected = rs.getBoolean("is_connected");
+			this.credit = rs.getFloat("credit");
 		}
 		catch (SQLException e)
 		{
@@ -45,6 +47,12 @@ public class User
 		this.lastConnection = userToSet.getLastConnection();
 		this.lCT = userToSet.getLastConnectionTime();
 		this.is_connected = userToSet.getConnectionState();
+		this.credit = userToSet.getCredit();
+	}
+	
+	public float getCredit()
+	{
+		return (this.credit);
 	}
 	
 	public String getLogin()

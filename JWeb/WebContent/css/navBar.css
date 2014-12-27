@@ -32,7 +32,7 @@
     width: 480px;
     margin: auto;
     top: 80px;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     position: relative;
 }
 
@@ -48,7 +48,7 @@
 
 .nav_menu_home
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: 0 0;
     margin-right: 5px;
     display: inline-block;
@@ -58,7 +58,7 @@
 
 .nav_menu_portfolio
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -16px 0;
     margin-right: 5px;
     display: inline-block;
@@ -68,7 +68,7 @@
 
 .nav_menu_regles
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -32px 0;
     margin-right: 5px;
     display: inline-block;
@@ -78,7 +78,7 @@
 
 .nav_menu_map
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -48px 0;
     margin-right: 5px;
     display: inline-block;
@@ -88,7 +88,7 @@
 
 .nav_menu_faq
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -64px 0;
     margin-right: 5px;
     display: inline-block;
@@ -98,7 +98,7 @@
 
 .nav_menu_boutique
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -80px 0;
     margin-right: 5px;
     display: inline-block;
@@ -108,7 +108,7 @@
 
 .nav_menu_contact
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -96px 0;
     margin-right: 5px;
     display: inline-block;
@@ -118,7 +118,7 @@
 
 .nav_menu_login
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -112px 0;
     margin-right: 5px;
     display: inline-block;
@@ -128,7 +128,7 @@
 
 .nav_menu_troll
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -128px 0;
     margin-right: 5px;
     display: inline-block;
@@ -138,7 +138,7 @@
 
 .nav_menu_epinews
 {
-    background: url('img/icones.png') no-repeat;
+    background: url('../img/icones.png') no-repeat;
     background-position: -144px 0;
     margin-right: 5px;
     display: inline-block;

@@ -2,29 +2,36 @@ body
 {
 	margin: 0;
 	padding: 0;
-	background: url("img/dark_stone.png");
+	background: url("../img/dark_stone.png");
 }
 
 .content
 {
 		width: 960px;
 		margin : auto;
+		font-family : "Roboto";
 }
 
-.logo
+caption
 {
-	width: 450px;
-	height: 64px;
-	margin: auto;
-	margin-top: 25px;
-	margin-bottom: 25px;
-	background: url("img/logo_armenian_shop.png");
+	color : white;	
 }
 
-.navBar
+td
 {
-	height: 54px;
+	color: black;
+}
+
+.page_title
+{
+	height: 32px;
 	width: 100%;
-	background: #ff0000;
+	background: url("../img/grass_menu.png");
+	margin-bottom: 40px;
+	color: white;
+}
+
+.page_title_text
+{
 	
 }

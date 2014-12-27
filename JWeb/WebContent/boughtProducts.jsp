@@ -21,7 +21,7 @@
 			{
 				BoughtProduct productToUse = productsList.get(counter);
 				out.println("Produit : " + productToUse.getNameProduct()); %> <br/> 
-				<% out.println("Date of Bought : " + productToUse.getDateBought()); %> <br/> <br/> <%
+				<% out.println("Date de l'achat : " + productToUse.getDateBought() + " à " + productToUse.getTimeBought()); %> <br/> <br/> <%
 				++counter;
 			}
 		%>

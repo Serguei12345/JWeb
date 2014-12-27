@@ -26,9 +26,8 @@ public class CoreJDBC extends HttpServlet
     {
         super();
         mc = new MConnection();
-        // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -47,12 +46,17 @@ public class CoreJDBC extends HttpServlet
 		if (this.mc.connectionToDatabase(userLogin, userPwd) == true)
 		{
 			HttpSession session = request.getSession();
-			if (session.getAttribute("MConnection") == null)
-				session.setAttribute("MConnection", this.mc);
-
-			if (session.getAttribute("userOfSession") == null)
-				session.setAttribute("userOfSession", this.mc.getUser());
+			session.setAttribute("MConnection", this.mc);
+			session.setAttribute("userOfSession", this.mc.getUser());
 			getServletContext().getRequestDispatcher("/user.jsp").forward(request,response);
+		}
+		else
+		{
+			HttpSession session = request.getSession();
+			String strError = "";
+			strError = "Identifiant et / ou mot de passe non valides";
+			session.setAttribute("strError", strError);
+			getServletContext().getRequestDispatcher("/main.jsp").forward(request,response);
 		}
 	}
 }

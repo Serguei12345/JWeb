@@ -31,6 +31,10 @@ public class MConnection
 	{
 		try
 		{
+			Checks checks = new Checks();
+			
+			if (checks.isAlphanumeric(userLogin) == false || checks.isAlphanumeric(userPwd) == false)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();

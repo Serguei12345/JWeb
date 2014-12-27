@@ -6,6 +6,7 @@ public class BoughtProduct
 	private int idProduct;
 	private int idUser;
 	private java.sql.Date dateBought;
+	private java.sql.Time timeBought;
 	private String nameProduct;
 	
 	public BoughtProduct()
@@ -13,12 +14,13 @@ public class BoughtProduct
 		
 	}
 	
-	public BoughtProduct(int idBuyToSet, int idProductToSet, int idUserToSet, java.sql.Date dateBoughtToSet, String nameProductToSet)
+	public BoughtProduct(int idBuyToSet, int idProductToSet, int idUserToSet, java.sql.Date dateBoughtToSet, java.sql.Time timeBoughtToSet, String nameProductToSet)
 	{
 		this.idBuy = idBuyToSet;
 		this.idProduct = idProductToSet;
 		this.idUser = idUserToSet;
 		this.dateBought = dateBoughtToSet;
+		this.timeBought = timeBoughtToSet;
 		this.nameProduct = nameProductToSet;
 	}
 	
@@ -40,6 +42,11 @@ public class BoughtProduct
 	public java.sql.Date getDateBought()
 	{
 		return (this.dateBought);
+	}
+	
+	public java.sql.Time getTimeBought()
+	{
+		return (this.timeBought);
 	}
 	
 	public String getNameProduct()

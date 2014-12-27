@@ -13,10 +13,13 @@ public class MAdmin
 		
 	}
 	
-	void insertProduct(String name, String description, String priceString, User user)
+	boolean insertProduct(String name, String description, String priceString, User user)
 	{
 		try
 		{
+			Checks checks = new Checks();
+			if (checks.isAlphanumeric(name) == false || checks.isAlphanumeric(description) == false || checks.isNumeric(priceString) == false)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
@@ -28,21 +31,24 @@ public class MAdmin
 			String lastRowIncrement = lastRow.toString();
 			String id_author = ((Integer)user.getId()).toString();
 			float price = Float.parseFloat(priceString);
-			sqlRequest = "INSERT into product (id_product, name, date_publication, is_bought, id_publisher, description, price) VALUES ("
-						+ lastRowIncrement + ", '" + name + "', NOW(), FALSE, " + id_author + ", '" + description + "', " + price + ");";
+			sqlRequest = "INSERT into product (id_product, name, date_publication, id_publisher, description, price, quantity) VALUES ("
+						+ lastRowIncrement + ", '" + name + "', NOW(), " + id_author + ", '" + description + "', " + price + ", 0);";
 			statement.executeUpdate(sqlRequest);
 		}
 		catch (ClassNotFoundException | SQLException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return (true);
 	}
 	
-	void insertArticleInDatabase(String title, String text, User user)
+	boolean insertArticleInDatabase(String title, String text, User user)
 	{
 		try
 		{
+			Checks checks = new Checks();
+			if (checks.isAlphanumeric(title) == false || checks.isAlphanumeric(text) == false)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
@@ -61,12 +67,16 @@ public class MAdmin
 		{
 			e.printStackTrace();
 		}
+		return (true);
 	}
 	
-	void insertReviewInDatabase(String title, String text, String productName, User user)
+	boolean insertReviewInDatabase(String title, String text, String productName, User user)
 	{
 		try
 		{
+			Checks checks = new Checks();
+			if (checks.isAlphanumeric(title) == false || checks.isAlphanumeric(text) == false || checks.isAlphanumeric(productName) == false)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
@@ -90,6 +100,7 @@ public class MAdmin
 		{
 			e.printStackTrace();
 		}
+		return (true);
 	}
 	
 	String getIdOfProductByHisName(java.sql.Statement statement, String productName)
@@ -112,10 +123,13 @@ public class MAdmin
 		return (strToRet);
 	}
 	
-	void setRightsOfUser(String login, String rightsToSet, User user)
+	boolean setRightsOfUser(String login, String rightsToSet, User user)
 	{
 		try
 		{
+			Checks checks = new Checks();
+			if (checks.isAlphanumeric(login) == false || checks.isAlphanumeric(rightsToSet) == false)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
@@ -128,12 +142,16 @@ public class MAdmin
 		{
 			e.printStackTrace();
 		}
+		return (true);
 	}
 	
-	void setCreditsOfUser(String login, String creditsToSet, User user)
+	boolean setCreditsOfUser(String login, String creditsToSet, User user)
 	{
 		try
 		{
+			Checks checks = new Checks();
+			if (checks.isAlphanumeric(login) == false || checks.isNumeric(creditsToSet) == false)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
@@ -146,12 +164,16 @@ public class MAdmin
 		{
 			e.printStackTrace();
 		}
+		return (true);
 	}
 	
-	void setQuantityOfProduct(String productName, String quantityOfProduct, User user)
+	boolean setQuantityOfProduct(String productName, String quantityOfProduct, User user)
 	{
 		try
 		{
+			Checks checks = new Checks();
+			if (checks.isAlphanumeric(productName) == false || checks.isNumeric(quantityOfProduct) == false)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
@@ -164,5 +186,6 @@ public class MAdmin
 		{
 			e.printStackTrace();
 		}
+		return (true);
 	}
 }

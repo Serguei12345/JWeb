@@ -11,11 +11,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Inscription
  */
-public class Inscription extends HttpServlet {
+public class Inscription extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -40,19 +42,41 @@ public class Inscription extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		String strError = "";
     	try
-    	{
+    	{    		
 			Class.forName("com.mysql.jdbc.Driver");
 	    	java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 	    	java.sql.Statement statement = connexion.createStatement();
-	    	if (this.checkLogin(request, statement) == false || this.checkIfEmail(request, statement) == false
-	    			|| this.checkIfPasswordGood(request, statement) == false)
+	    	boolean bLogin = this.checkLogin(request, statement);
+	    	boolean bEmail = this.checkIfEmail(request, statement);
+	    	boolean bPwd = this.checkIfPasswordGood(request, statement);
+	    	if (bLogin == false || bEmail == false || bPwd == false)
 	    	{
-	    		
-	    		response.sendRedirect("main.jsp");
+	    		if (bLogin == false)
+	    		{
+	    			strError = "Le login que vous avez inséré n'est pas valide";
+	    			HttpSession session = request.getSession();
+	    			session.setAttribute("strError", strError);
+	    			getServletContext().getRequestDispatcher("/main.jsp").forward(request,response);
+	    		}
+	    		else if (bEmail == false)
+	    		{
+	    			strError = "L'adresse mail que vous avez inséré n'est pas valide";
+	    			HttpSession session = request.getSession();
+	    			session.setAttribute("strError", strError);
+	    			getServletContext().getRequestDispatcher("/main.jsp").forward(request,response);
+	    		}
+	    		else if (bPwd == false)
+	    		{
+	    			strError = "Les mots de passe que vous avez inséré ne sont pas valides";
+	    			HttpSession session = request.getSession();
+	    			session.setAttribute("strError", strError);
+	    			getServletContext().getRequestDispatcher("/main.jsp").forward(request,response);
+	    		}
 	    	}
 	    	else
-	    	{
+	    	{		
 	    		ResultSet rs = statement.executeQuery("SELECT COUNT(login) FROM user;");
 	    		rs.next();
 	    		rs.last();
@@ -63,14 +87,17 @@ public class Inscription extends HttpServlet {
 	    		values += ("'" + request.getParameter("login") + "', ");
 	    		values += ("'" + request.getParameter("password") + "', ");
 	    		values += ("'" + request.getParameter("email") + "', ");
-	    		values += "'00000', NOW(), TRUE);";
+	    		values += "'00000', NOW(), TRUE, 0);";
 	    		statement.executeUpdate("INSERT INTO user" + values);
+	    		strError = "Vous avez bien crée votre compte ARMENIAN SHOP";
+	    		HttpSession session = request.getSession();
+	    		session.setAttribute("strError", strError);
 	    		getServletContext().getRequestDispatcher("/main.jsp").forward(request,response);
 	    	}
 	    }
         catch(Exception e)
         {
-        	System.out.println(e.getMessage());
+    		e.printStackTrace();
         }
 	}
 	
@@ -79,6 +106,10 @@ public class Inscription extends HttpServlet {
 		try
 		{
 			String login = request.getParameter("login");
+			Checks checks = new Checks();
+			
+			if (checks.isAlphanumeric(login) == false)
+				return (false);
 			if (login.equals("") == true)
 				return (false);
 			ResultSet rs = statement.executeQuery("SELECT login FROM user WHERE login='" + login + "';");
@@ -100,7 +131,10 @@ public class Inscription extends HttpServlet {
 		try
 		{
 			String email = request.getParameter("email");
+			Checks checks = new Checks();
 			
+			if (checks.isAlphanumericWithPointsAt(email) == false)
+				return (false);
 			if (email.equals("") == true)
 				return (false);
 			if (this.checkIfEmailIsValid(email) == false)
@@ -133,7 +167,10 @@ public class Inscription extends HttpServlet {
 	{
 		String password = request.getParameter("password");
 		String confirmation_password = request.getParameter("password-confirmation");
+		Checks checks = new Checks();
 		
+		if (checks.isAlphanumeric(password) == false)
+			return (false);
 		if (password.equals("") == true)
 			return (false);
 		if (password.equals(confirmation_password) == false)

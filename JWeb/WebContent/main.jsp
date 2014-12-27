@@ -1,4 +1,5 @@
 <%@page import="com.sdzee.bdd.CoreJDBC"%>
+<%@page import="com.sdzee.bdd.Inscription"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,9 +46,13 @@
 	        </tr>
           </table>
       </form>
+      	<%
+				out.println((String)session.getAttribute("strError"));
+		%>
  </div>
 
-	<div style="width: 300px; display: inline-block; float: right;"> 
+	<div style="width: 300px; display: inline-block; float: right;">
+
         <form method="POST" action="Inscription">
         	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
            		<caption>S'inscrire</caption>

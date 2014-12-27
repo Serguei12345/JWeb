@@ -7,6 +7,12 @@
 <title>Admin</title>
 </head>
 <body>
+	<%
+		String strError = (String)session.getAttribute("strError");
+		if (strError != null && strError.length() > 0)
+			out.println(strError);
+		
+	%>
 		<form method="POST" action="AdminManager">
 			<input type="text" id="write_article_title" name="write_article_title_name" value = "Introduisez votre titre ici"/><br/>
 			<input type="text" id="write_article_text" name="write_article_text_name" value = "Introduisez votre texte ici"/><br/>

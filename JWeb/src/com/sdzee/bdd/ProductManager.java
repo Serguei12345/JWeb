@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 /**
  * Servlet implementation class ProductManager
@@ -40,6 +41,7 @@ public class ProductManager extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String str = "";
+		String strError = "";
 		if (request.getParameter("products_submit") != null)
 		{
 			this.mPM.searchProducts();
@@ -61,9 +63,27 @@ public class ProductManager extends HttpServlet
 		{
 			User user = new User((User)request.getSession().getAttribute("userOfSession"));
 			str = this.isBuyButtonPressed(request);
+			str = str.substring(7, str.length());
+			str = this.mPM.buyItemFindNameOfProductById(str);
 			if (str.length() > 0)
 			{
-				this.mPM.buyProductForUser(str, user);
+				int res = this.mPM.buyProductForUser(str, user);
+				this.mPM.searchProducts();
+				HttpSession session = request.getSession();
+				
+				if (session.getAttribute("MProductManager") == null)
+					session.setAttribute("MProductManager", this.mPM);
+				if (res == 0)
+					strError = "L'achat s'est bien déroulé";
+				else if (res == 1)
+					strError = "Le produit est en rupture de stock";
+				else if (res == 2)
+					strError = "Vous n'avez pas assez de crédit";
+				else if (res == 3)
+					strError = "Le nom de ce produit n'est pas valide";
+				
+				session.setAttribute("strError", strError);
+				getServletContext().getRequestDispatcher("/products.jsp").forward(request,response);
 			}
 		}
 		

@@ -4,8 +4,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 public class MAdmin
 {
 	MAdmin()
@@ -92,7 +90,6 @@ public class MAdmin
 			{
 				sqlRequest += "INSERT INTO review VALUES (" + lastRowIncrement + ", " + id_author + ", '" + title + "', '"
 						+ text + "', 'image', " + id_product + ", NOW());";
-				JOptionPane.showConfirmDialog(null, sqlRequest);
 				statement.executeUpdate(sqlRequest);
 			}
 		}

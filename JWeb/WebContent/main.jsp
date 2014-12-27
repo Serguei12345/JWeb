@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home</title>
+<link rel="stylesheet" type="text/css" href="css/fonts.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/navBar.css">
 
@@ -20,13 +21,15 @@
     	</div>
 	</div>
 
-<a href="/"><div class="nav2_logo" id="nav2_logo"><img src="css/img/logo_armenian_shop.png" alt="logo de the armenian shop" width=480 /></div>
+<a href="/"><div class="nav2_logo" id="nav2_logo"><img src="img/logo_armenian_shop.png" alt="logo de the armenian shop" width=480 /></div>
 </a>
 <div class="content">
+
+<div class="page_title"><span class="page_title_text">Login</span></div>
 <div style="width: 300px; display: inline-block; fload: left;"> 
 	<form method="POST" action="CoreJDBC">
         <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-			<caption>Vous pouvez vous connecter via ce formulaire</caption>
+			<caption>Se connecter</caption>
 	     	<tr>
 	             <td width="500">Pseudo</td>
 	             <td width="6">:</td>

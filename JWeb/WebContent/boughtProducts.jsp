@@ -10,19 +10,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Les produits que vous avez acheté</title>
 <jsp:include page="header.html" />
-<div class="page_title">Produits acheté</div>
+<div class="page_title">Produits achetés</div>
 		<%
 			MProductManager mPM = (MProductManager)session.getAttribute("MProductManager");
-			ArrayList<BoughtProduct> productsList = mPM.getListOfBoughtProducts();
-			int counter = 0;
-			int productsListSize = productsList.size();
-		
-			while (counter < productsListSize)
+			if (mPM != null)
 			{
-				BoughtProduct productToUse = productsList.get(counter);
-				out.println("Produit : " + productToUse.getNameProduct()); %> <br/> 
-				<% out.println("Date de l'achat : " + productToUse.getDateBought() + " à " + productToUse.getTimeBought()); %> <br/> <br/> <%
-				++counter;
+				ArrayList<BoughtProduct> productsList = mPM.getListOfBoughtProducts();
+				if (productsList != null)
+				{
+					int counter = 0;
+					int productsListSize = productsList.size();
+			
+					while (counter < productsListSize)
+					{
+						BoughtProduct productToUse = productsList.get(counter);
+							out.println("Produit : " + productToUse.getNameProduct()); %> <br/> 
+						<% out.println("Date de l'achat : " + productToUse.getDateBought() + " à " + productToUse.getTimeBought()); %> <br/> <br/> <%
+						++counter;
+					}
+				}
 			}
 		%>
 		<form method="POST" action="AdminManager">

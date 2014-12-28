@@ -15,45 +15,54 @@
 <div class="page_title">Utilisateurs</div>
 	<%
 		MConnection coreUser = (MConnection)session.getAttribute("MConnection");
-		User user = (User)session.getAttribute("userOfSession");
+		if (coreUser != null)
+		{
+			User user = (User)session.getAttribute("userOfSession");
 	
-		out.println("Bonjour " + user.getLogin()); %> <br/> 
+			if (user != null)
+			{
+				out.println("Bonjour " + user.getLogin()); %> <br/> <br/>
 	<%
-		ArrayList<ArrayList<String>> list = coreUser.getListOfArticles();
-		int counterArticle = 0;
-		int counterArticleElement;
-			int sizeOfArticleElements;
-		int sizeOfArticles = list.size();
-		if (sizeOfArticles > 5)
-			sizeOfArticles = 5;
-		out.println("Nouveaux Articles :");	
+				ArrayList<ArrayList<String>> list = coreUser.getListOfArticles();
+				if (list != null)
+				{
+					int counterArticle = 0;
+					int counterArticleElement;
+					int sizeOfArticleElements;
+					int sizeOfArticles = list.size();
+					if (sizeOfArticles > 5)
+						sizeOfArticles = 5;
+					out.println("Nouveaux Articles :");	
 	%>	
 		<br/>
 	<%
-		while (counterArticle < sizeOfArticles)
-		{
-			counterArticleElement = 0;
-			sizeOfArticleElements = list.get(counterArticle).size();
-			while (counterArticleElement < sizeOfArticleElements)
-			{
-				out.println(list.get(counterArticle).get(counterArticleElement) + " ");
-				out.println("");
-				++counterArticleElement;
-			}
-			++counterArticle; %> <br/> 
+					while (counterArticle < sizeOfArticles)
+					{
+						counterArticleElement = 0;
+						sizeOfArticleElements = list.get(counterArticle).size();
+						while (counterArticleElement < sizeOfArticleElements)
+						{
+							out.println(list.get(counterArticle).get(counterArticleElement) + " "); %> <br/> <%
+							out.println("");
+							++counterArticleElement;
+						}
+						++counterArticle; %> <br/> 
 	<%
-		}
+					}
 
-		String rights = user.getRights();
-
-		if (rights.charAt(0) == '1')
-		{	
+					String rights = user.getRights();
+			
+					if (rights.charAt(0) == '1')
+					{	
 	%>
 
 		<form method="POST" action="AdminManager">
 			<input type="submit" id="submit_admin" name="admin_begin_submit" value="AdminZONE"/>
 		</form>
 	<%
+					}
+				}
+			}
 		}
 	%>
 		<form method="POST" action="ArticlesReviews">

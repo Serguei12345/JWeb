@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Dim 28 Décembre 2014 à 00:08
+-- Généré le : Dim 28 Décembre 2014 à 17:02
 -- Version du serveur: 5.1.53
 -- Version de PHP: 5.3.4
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `date_edit` datetime NOT NULL,
   `id_author` bigint(20) NOT NULL,
   PRIMARY KEY (`id_article`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `article`
@@ -46,7 +46,8 @@ INSERT INTO `article` (`id_article`, `title`, `text`, `image`, `date_edit`, `id_
 (4, 'Introduisez votre titre ici', 'Introduisez votre texte ici', 'lol', '2014-12-23 17:49:57', 1),
 (5, 'Introduisez votre titre ici', 'Introduisez votre texte ici', 'image', '2014-12-26 19:36:53', 1),
 (6, 'Introduisez votre titre ici', 'Introduisez votre texte ici', 'image', '2014-12-26 19:43:35', 1),
-(7, 'lolstache', 'lolcat', 'image', '2014-12-28 01:03:58', 1);
+(7, 'lolstache', 'lolcat', 'image', '2014-12-28 01:03:58', 1),
+(8, 'ARTICLE1', 'DUCODEPENAL', 'image', '2014-12-28 17:57:08', 1);
 
 -- --------------------------------------------------------
 
@@ -67,17 +68,11 @@ CREATE TABLE IF NOT EXISTS `bought_products` (
 --
 
 INSERT INTO `bought_products` (`id_buy`, `id_product`, `id_user`, `date_bought`) VALUES
-(11, 3, 5, '2014-12-28 01:06:11'),
-(10, 3, 5, '2014-12-28 01:05:33'),
-(9, 1, 5, '2014-12-28 01:01:32'),
-(8, 2, 1, '2014-12-28 00:55:56'),
-(7, 2, 1, '2014-12-28 00:54:04'),
-(6, 1, 1, '2014-12-28 00:51:56'),
-(5, 2, 1, '2014-12-28 00:50:54'),
-(4, 1, 3, '2014-12-28 00:49:58'),
-(3, 1, 1, '2014-12-28 00:48:18'),
-(2, 2, 1, '2014-12-28 00:48:16'),
-(1, 2, 1, '2014-12-28 00:48:14');
+(5, 5, 5, '2014-12-28 18:01:17'),
+(4, 5, 5, '2014-12-28 18:01:15'),
+(3, 5, 5, '2014-12-28 18:01:14'),
+(2, 5, 5, '2014-12-28 18:01:12'),
+(1, 3, 1, '2014-12-28 17:53:06');
 
 -- --------------------------------------------------------
 
@@ -103,8 +98,9 @@ CREATE TABLE IF NOT EXISTS `product` (
 INSERT INTO `product` (`id_product`, `name`, `date_publication`, `id_publisher`, `description`, `price`, `quantity`) VALUES
 (1, 'product1', '2014-12-27 00:00:00', 1, 'description1', 10, 0),
 (2, 'product2', '2014-12-27 00:00:00', 1, 'description2', 20, 0),
-(4, 'product3', '2014-12-28 01:04:32', 1, 'product3', 5000, 0),
-(3, 'lolcat', '2014-12-27 23:52:52', 1, 'lolstache', 5000, 4986);
+(3, 'produit3', '2014-12-28 17:51:06', 1, 'produit3', 500, 2),
+(4, 'produit4', '2014-12-28 17:51:31', 1, 'produit4', 500, 0),
+(5, 'test1', '2014-12-28 17:58:56', 1, 'test1', 50, 46);
 
 -- --------------------------------------------------------
 
@@ -148,15 +144,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_connected` tinyint(1) NOT NULL,
   `credit` float NOT NULL,
   KEY `id_user` (`id_user`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id_user`, `login`, `password`, `email`, `rights`, `last_connection`, `is_connected`, `credit`) VALUES
-(1, 'Serguei12345', 'Serge12345', 'serguei.ovoyan@epitech.eu', '11111', '2014-12-23 16:35:41', 1, 30),
-(5, 'test1', 'test1', 'test1@epitech.eu', '11111', '2014-12-28 01:00:43', 1, 500),
+(1, 'Serguei12345', 'Serge12345', 'serguei.ovoyan@epitech.eu', '11111', '2014-12-23 16:35:41', 1, 60),
+(5, 'test1', 'test1', 'test1@epitech.eu', '11111', '2014-12-28 01:00:43', 1, 300),
 (4, 'b', 'c', 'd@e.eu', '00000', '2014-12-28 00:24:36', 1, 0),
 (3, 'nono', 'a', 'e@epitech.eu', '00000', '2014-12-28 00:24:21', 1, 2),
-(2, 'a', 'b', 'c@e.eu', '00000', '2014-12-28 00:22:02', 1, 0);
+(2, 'a', 'b', 'c@e.eu', '00000', '2014-12-28 00:22:02', 1, 0),
+(6, 'pseudoTest', 'loltest', 'loltest@epitech.eu', '00000', '2014-12-28 17:14:52', 1, 0),
+(7, 'test2', 'test2', 'test2@epitech.eu', '00000', '2014-12-28 17:59:17', 1, 0);

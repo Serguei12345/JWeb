@@ -13,29 +13,32 @@
 <div class="page_title">Produits</div>
 	<%
 		MProductManager mPM = (MProductManager)session.getAttribute("MProductManager");
-		ArrayList<Product> productsList = mPM.getListOfProducts();
-		int counter = 0;
-		int productsListSize = productsList.size();
-		
-		if ((String)session.getAttribute("strError") != null)
-			out.println((String)session.getAttribute("strError"));
-		Integer ct = 0;
-		while (counter < productsListSize)
+		if (mPM != null)
 		{
-			ct = counter + 1;
-			Product productToUse = productsList.get(counter); %> <br/> 
-			<% out.println("Produit : " + productToUse.getName()); %> <br/> 
-			<% out.println("Description : " + productToUse.getDescription()); %> <br/>
-			<% out.println("Prix : " + productToUse.getPrice() + " $"); %> <br/>
-			<% out.println("Quantité : " + productToUse.getQuantity()); %> <br/>
-			<% out.println("Publié par : " + productToUse.getLoginPublisher() + " le " + productToUse.getDateOfPublication() + " :: " + productToUse.getTimeOfPublication()); %> <br/> <br/>
-			<form method="POST" action="ProductManager">
-				<input type="submit" id="buy_item" name=<%="product" + ct.toString()%> value="Valider l'achat"/>
-			</form>
+			ArrayList<Product> productsList = mPM.getListOfProducts();
+			int counter = 0;
+			int productsListSize = productsList.size();
 			
-			<% Integer li = counter;
-				session.setAttribute("product" + li.toString(), productToUse.getName());
-			++counter;
+			if ((String)session.getAttribute("strError") != null)
+				out.println((String)session.getAttribute("strError"));
+			Integer ct = 0;
+			while (counter < productsListSize)
+			{
+				ct = counter + 1;
+				Product productToUse = productsList.get(counter); %> <br/> 
+				<% out.println("Produit : " + productToUse.getName()); %> <br/> 
+				<% out.println("Description : " + productToUse.getDescription()); %> <br/>
+				<% out.println("Prix : " + productToUse.getPrice() + " $"); %> <br/>
+				<% out.println("Quantité : " + productToUse.getQuantity()); %> <br/>
+				<% out.println("Publié par : " + productToUse.getLoginPublisher() + " le " + productToUse.getDateOfPublication() + " :: " + productToUse.getTimeOfPublication()); %> <br/> <br/>
+				<form method="POST" action="ProductManager">
+					<input type="submit" id="buy_item" name=<%="product" + ct.toString()%> value="Valider l'achat"/>
+				</form>
+			
+				<% Integer li = counter;
+					session.setAttribute("product" + li.toString(), productToUse.getName());
+				++counter;
+			}
 		}
 	%>
 		<form method="POST" action="ProductManager">

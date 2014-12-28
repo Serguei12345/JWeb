@@ -18,12 +18,12 @@
 			   <table  width="300px" height="150px" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 					<caption>Nouvel article</caption>
 				     	<tr>
-				             <td width="500">Pseudo</td>
+				             <td width="500">Titre</td>
 				             <td width="6">:</td>
 				             <td width="294"><input type="text" id="write_article_title" name="write_article_title_name" value = "Introduisez votre titre ici"/></td>
 				        </tr>
 				        <tr>
-				             <td>article</td>
+				             <td>Article</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_article_text" name="write_article_text_name" value = "Introduisez votre texte ici"/></td>
 				        </tr>
@@ -38,19 +38,19 @@
 		<div class="admin_box">	
 			<form method="POST" action="AdminManager">
 			   <table width="300px" height="150px" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-					<caption>Nouvel article</caption>
+					<caption>Nouvelle review</caption>
 				     	<tr>
-				             <td width="500">titre</td>
+				             <td width="500">Titre</td>
 				             <td width="6">:</td>
 				             <td width="294"><input type="text" id="write_review_title" name="write_review_title_name" value = "Introduisez votre titre ici"/></td>
 				        </tr>
 				        <tr>
-				             <td>review</td>
+				             <td>Review</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_review_text" name="write_review_text_name" value = "Introduisez votre texte ici"/></td>
 				        </tr>
 				        <tr>
-				             <td>nom du produit</td>
+				             <td>Nom du produit</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_review_product" name="write_review_product_name" value="Introduisez le nom du produit ici"/></td>
 				        </tr>
@@ -65,14 +65,14 @@
 		<div class="admin_box">	
 			<form method="POST" action="AdminManager">
 			   <table width="300px" height="150px" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-					<caption>Nouvelle review</caption>
+					<caption>Changer les droits d'un utilisateur</caption>
 				     	<tr>
-				             <td width="500">titre</td>
+				             <td width="500">Login</td>
 				             <td width="6">:</td>
 				             <td width="294"><input type="text" id="write_login_set" name="write_login_set_name" value="Introduisez le login de la personne"/></td>
 				        </tr>
 				        <tr>
-				             <td>review</td>
+				             <td>Droits</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_rights_set" name="write_rights_set_name" value="Introduisez les droits en 0 et 1 ici"/></td>
 				        </tr>
@@ -89,19 +89,19 @@
 			   <table width="300px" height="150px" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 					<caption>Changer le solde d'un utilisateur</caption>
 				     	<tr>
-				             <td width="500">login</td>
+				             <td width="500">Login</td>
 				             <td width="6">:</td>
 				             <td width="294"><input type="text" id="write_login_set" name="write_login_set_name" value="Introduisez le login de la personne"/></td>
 				        </tr>
 				        <tr>
-				             <td>solde</td>
+				             <td>Solde</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_credit_set" name="write_credit_set_name" value="Introduisez le montant de l'utilisateur"/></td>
 				        </tr>
 				        <tr>
 				             <td>&nbsp;</td>
 				             <td>&nbsp;</td>
-				             <td><input type="submit" id="write_rights_submit" name="write_credit_submit" value="Changer le montant d'un utilisateur"/></td>
+				             <td><input type="submit" id="write_credit_submit" name="write_credit_submit" value="Changer le montant d'un utilisateur"/></td>
 				        </tr>
           		</table>
       		</form>
@@ -111,17 +111,17 @@
 			   <table width="300px" height="150px" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 					<caption>Nouveau produit</caption>
 				     	<tr>
-				             <td width="500">nom du produit</td>
+				             <td width="500">Nom du produit</td>
 				             <td width="6">:</td>
 				             <td width="294"><input type="text" id="write_product_name_set" name="write_product_name_set_name" value="Introduisez le nom du produit_ici"/></td>
 				        </tr>
 				        <tr>
-				             <td>description</td>
+				             <td>Description</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_product_description_set" name="write_product_description_set_name" value="Introduisez la description du produit ici"/></td>
 				        </tr>
 				        <tr>
-				             <td>prix</td>
+				             <td>Prix</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_product_price_set" name="write_product_price_set_name" value="Introduisez le prix du produit ici"/></td>
 				        </tr>
@@ -138,12 +138,12 @@
 			   <table width="300px" height="150px" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 					<caption>Changer la quantité disponible d'un produit</caption>
 				     	<tr>
-				             <td width="500">nom du produit</td>
+				             <td width="500">Nom du produit</td>
 				             <td width="6">:</td>
 				             <td><input type="text" id="write_product_name_set" name="write_product_name_set_name" value="Introduisez le nom du produit_ici"/></td>
 				        </tr>
 				        <tr>
-				             <td>quantitée</td>
+				             <td>Quantité</td>
 				             <td>:</td>
 				             <td><input type="text" id="write_product_quantity_set" name="write_product_quantity_set_name" value="Introduisez la quantité du produit ici"/></td>
 				        </tr>

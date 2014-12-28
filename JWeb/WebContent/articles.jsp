@@ -13,15 +13,21 @@
 <div class="page_title">Articles</div>
 	<%
 		MArticlesReviews mAr = (MArticlesReviews)session.getAttribute("MArticlesReviews");
-		ArrayList<Article> articlesList = mAr.getArticlesList();
-		int counter = 0;
-		while (counter < articlesList.size())
+		if (mAr != null)
 		{
-			Article articleToUse = articlesList.get(counter); %> <br/> 
-			<% out.println("Title : " + articleToUse.getTitle()); %> <br/> 
-			<% out.println("Content : " + articleToUse.getText()); %> <br/> 
-			<% out.println("Published by : " + articleToUse.getAuthor() + " at " + articleToUse.getDateOfEdition() + " :: " + articleToUse.getTimeOfEdition()); %> <br/> <br/>
-			<% ++counter;
+			ArrayList<Article> articlesList = mAr.getArticlesList();
+			if (articlesList != null)
+			{
+				int counter = 0;
+				while (counter < articlesList.size())
+				{
+					Article articleToUse = articlesList.get(counter); %> <br/> 
+					<% out.println("Title : " + articleToUse.getTitle()); %> <br/> 
+					<% out.println("Content : " + articleToUse.getText()); %> <br/> 
+					<% out.println("Published by : " + articleToUse.getAuthor() + " at " + articleToUse.getDateOfEdition() + " :: " + articleToUse.getTimeOfEdition()); %> <br/> <br/>
+					<% ++counter;
+				}
+			}
 		}
 	%>
 		<form method="POST" action="AdminManager">

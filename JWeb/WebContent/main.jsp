@@ -36,7 +36,9 @@
           </table>
       </form>
       	<%
-				out.println((String)session.getAttribute("strError"));
+			String strError = (String)session.getAttribute("strError");
+			if (strError != null && strError.length() > 0)
+				out.println(strError);
 		%>
  </div>
 

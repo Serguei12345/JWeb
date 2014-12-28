@@ -13,16 +13,22 @@
 <div class="page_title">Reviews</div>
 	<%
 		MArticlesReviews mAr = (MArticlesReviews)session.getAttribute("MArticlesReviews");
-		ArrayList<Review> reviewsList = mAr.getReviewsList();
-		int counter = 0;
-		while (counter < reviewsList.size())
+		if (mAr != null)
 		{
-			Review reviewToUse = reviewsList.get(counter); %> <br/> 
-			<% out.println("Title : " + reviewToUse.getTitle()); %> <br/> 
-			<% out.println("Content : " + reviewToUse.getText()); %> <br/>
-			<% out.println("Product : " + reviewToUse.getObjectName()); %> <br/> 
-			<% out.println("Published by : " + reviewToUse.getAuthor() + " at " + reviewToUse.getDateOfEdition() + " :: " + reviewToUse.getTimeOfEdition()); %> <br/> <br/>
-			<% ++counter;
+			ArrayList<Review> reviewsList = mAr.getReviewsList();
+			if (reviewsList != null)
+			{
+				int counter = 0;
+				while (counter < reviewsList.size())
+				{
+					Review reviewToUse = reviewsList.get(counter); %> <br/> 
+					<% out.println("Title : " + reviewToUse.getTitle()); %> <br/> 
+					<% out.println("Content : " + reviewToUse.getText()); %> <br/>
+					<% out.println("Product : " + reviewToUse.getObjectName()); %> <br/> 
+					<% out.println("Published by : " + reviewToUse.getAuthor() + " at " + reviewToUse.getDateOfEdition() + " :: " + reviewToUse.getTimeOfEdition()); %> <br/> <br/>
+					<% ++counter;
+				}
+			}
 		}
 	%>
 		<form method="POST" action="AdminManager">

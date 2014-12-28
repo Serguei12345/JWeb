@@ -11,8 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/navBar.css">
 
-</head>
-<body>
+<jsp:include page="header.html" />
 	<div class="nav2">
         <div class="nav2_960">
 	    	<div class="nav2_menu_gen">
@@ -25,7 +24,6 @@
 
 <a href="/"><div class="nav2_logo" id="nav2_logo"><img src="img/logo_armenian_shop.png" alt="logo de the armenian shop" width=480 /></div>
 </a>
-<div class="content">
 
 <div class="page_title"><span class="page_title_text">Login</span></div>
 <div style="width: 300px; display: inline-block; fload: left;"> 
@@ -87,6 +85,6 @@
             </table>    
    		</form>
 	</div>
-</div>
+<jsp:include page="footer.html" />
 </body>
 </html>

@@ -9,8 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Reviews</title>
-</head>
-<body>
+<jsp:include page="header.html" />
 	<%
 		MArticlesReviews mAr = (MArticlesReviews)session.getAttribute("MArticlesReviews");
 		ArrayList<Review> reviewsList = mAr.getReviewsList();
@@ -28,5 +27,6 @@
 		<form method="POST" action="AdminManager">
 			<input type="submit" id="go_to_user" name="go_to_user_name" value="UserZONE"/>
 		</form>
+		<jsp:include page="footer.html" />
 </body>
 </html>

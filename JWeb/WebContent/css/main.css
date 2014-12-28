@@ -8,8 +8,31 @@ body
 .content
 {
 		width: 960px;
+		min-height: 650px;
 		margin : auto;
 		font-family : "Roboto";
+}
+
+.footer
+{
+	height: 100px;
+	width: 100%;
+	background: #323232;
+	font-family : "Roboto";
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.page_admin
+{
+	font-size: 38px;
+	color: white;
+	padding-bottom: 40px;
+}
+.admin_box
+{
+	display: inline-block;
 }
 
 caption

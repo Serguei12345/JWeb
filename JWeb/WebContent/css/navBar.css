@@ -1,4 +1,3 @@
-
 .nav2
 {
     height: 55px;
@@ -86,7 +85,7 @@
     width: 16px;
 }
 
-.nav_menu_faq
+.nav_menu_reviews
 {
     background: url('../img/icones.png') no-repeat;
     background-position: -64px 0;
@@ -126,7 +125,7 @@
     width: 16px;
 }
 
-.nav_menu_troll
+.nav_menu_admin
 {
     background: url('../img/icones.png') no-repeat;
     background-position: -128px 0;

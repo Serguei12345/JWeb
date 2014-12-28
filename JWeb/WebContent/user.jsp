@@ -11,8 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Utilisateur</title>
-</head>
-<body>
+<jsp:include page="header.html" />
 	<%
 		MConnection coreUser = (MConnection)session.getAttribute("MConnection");
 		User user = (User)session.getAttribute("userOfSession");
@@ -71,5 +70,6 @@
 		<form method="POST" action="ProductManager">
 			<input type="submit" id="bought_products_submit" name="bought_products_submit_name" value="Voir vos achats"/>
 		</form>
+		<jsp:include page="footer.html" />
 </body>
 </html>

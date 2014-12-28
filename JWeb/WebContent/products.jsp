@@ -9,8 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Produits</title>
-</head>
-<body>
+<jsp:include page="header.html" />
 	<%
 		MProductManager mPM = (MProductManager)session.getAttribute("MProductManager");
 		ArrayList<Product> productsList = mPM.getListOfProducts();
@@ -41,5 +40,6 @@
 		<form method="POST" action="ProductManager">
 			<input type="submit" id="go_to_user" name="go_to_user_name" value="UserZONE"/>
 		</form>
+		<jsp:include page="footer.html" />
 </body>
 </html>

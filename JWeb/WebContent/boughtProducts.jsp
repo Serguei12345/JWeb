@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Les produits que vous avez acheté</title>
 <jsp:include page="header.html" />
+<div class="page_title">Produits acheté</div>
 		<%
 			MProductManager mPM = (MProductManager)session.getAttribute("MProductManager");
 			ArrayList<BoughtProduct> productsList = mPM.getListOfBoughtProducts();

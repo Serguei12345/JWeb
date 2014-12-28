@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Produits</title>
 <jsp:include page="header.html" />
+<div class="page_title">Produits</div>
 	<%
 		MProductManager mPM = (MProductManager)session.getAttribute("MProductManager");
 		ArrayList<Product> productsList = mPM.getListOfProducts();

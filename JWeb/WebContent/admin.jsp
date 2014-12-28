@@ -12,6 +12,7 @@
 			out.println(strError);
 		
 	%>
+	<div class="page_title">Admin</div>
 		<div class="admin_box">
 			<form method="POST" action="AdminManager">
 			   <table  width="300px" height="150px" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">

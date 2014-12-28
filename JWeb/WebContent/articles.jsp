@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Articles</title>
 <jsp:include page="header.html" />
+<div class="page_title">Articles</div>
 	<%
 		MArticlesReviews mAr = (MArticlesReviews)session.getAttribute("MArticlesReviews");
 		ArrayList<Article> articlesList = mAr.getArticlesList();

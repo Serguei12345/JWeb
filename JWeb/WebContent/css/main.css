@@ -24,7 +24,7 @@ body
 	padding-top: 10px;
 }
 
-.page_admin
+.page_title
 {
 	font-size: 38px;
 	color: white;
@@ -43,18 +43,4 @@ caption
 td
 {
 	color: black;
-}
-
-.page_title
-{
-	height: 32px;
-	width: 100%;
-	background: url("../img/grass_menu.png");
-	margin-bottom: 40px;
-	color: white;
-}
-
-.page_title_text
-{
-	
 }

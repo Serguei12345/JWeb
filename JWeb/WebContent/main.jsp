@@ -6,26 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home</title>
+<title>Login</title>
 <link rel="stylesheet" type="text/css" href="css/fonts.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/navBar.css">
 
 <jsp:include page="header.html" />
-	<div class="nav2">
-        <div class="nav2_960">
-	    	<div class="nav2_menu_gen">
-	        	<a href="/"><div class="nav_menu"><span class="nav_menu_home"></span><span>Home</span></div></a>
-	        	<a href="/"><div class="nav_menu"><span class="nav_menu_boutique"></span><span>Shop</span></div></a>
-	        	<a href="/"><div class="nav_menu"><span class="nav_menu_login"></span><span>login</span></div></a>
-	    	</div>
-    	</div>
-	</div>
+<div class="page_title">Login</div>
 
-<a href="/"><div class="nav2_logo" id="nav2_logo"><img src="img/logo_armenian_shop.png" alt="logo de the armenian shop" width=480 /></div>
-</a>
-
-<div class="page_title"><span class="page_title_text">Login</span></div>
 <div style="width: 300px; display: inline-block; fload: left;"> 
 	<form method="POST" action="CoreJDBC">
         <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">

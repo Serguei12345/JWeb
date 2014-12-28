@@ -12,6 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Utilisateur</title>
 <jsp:include page="header.html" />
+<div class="page_title">Utilisateurs</div>
 	<%
 		MConnection coreUser = (MConnection)session.getAttribute("MConnection");
 		User user = (User)session.getAttribute("userOfSession");

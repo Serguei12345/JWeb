@@ -77,8 +77,7 @@ public class Inscription extends HttpServlet
 	    	}
 	    	else
 	    	{		
-	    		ResultSet rs = statement.executeQuery("SELECT COUNT(login) FROM user;");
-	    		rs.next();
+	    		ResultSet rs = statement.executeQuery("SELECT login FROM user;");
 	    		rs.last();
 	    		Integer lastRow = rs.getRow() + 1;
 	    		rs.first();

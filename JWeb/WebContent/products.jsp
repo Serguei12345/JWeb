@@ -38,5 +38,8 @@
 			++counter;
 		}
 	%>
+		<form method="POST" action="ProductManager">
+			<input type="submit" id="go_to_user" name="go_to_user_name" value="UserZONE"/>
+		</form>
 </body>
 </html>

@@ -60,6 +60,11 @@ public class User
 		return (this.login);
 	}
 	
+	public void setCredit(float creditToSet)
+	{
+		this.credit = creditToSet;
+	}
+	
 	public String getPassword()
 	{
 		return (this.password);

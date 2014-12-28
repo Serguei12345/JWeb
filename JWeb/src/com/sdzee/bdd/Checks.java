@@ -21,6 +21,24 @@ public class Checks
 		return (true);
 	}
 	
+	boolean isFloat(String str)
+	{
+		int counter = 0;
+		int dotCounter = 0;
+		while (counter < str.length())
+		{
+			if (str.charAt(counter) < '0' || str.charAt(counter) > '9')
+			{
+				if (dotCounter == 0)
+					++dotCounter;
+				else if (dotCounter > 0)
+					return (false);
+			}
+			++counter;
+		}
+		return (true);
+	}
+	
 	boolean isNumeric(String str)
 	{
 		int counter = 0;

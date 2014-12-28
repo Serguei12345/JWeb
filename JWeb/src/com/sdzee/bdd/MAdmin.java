@@ -127,6 +127,8 @@ public class MAdmin
 			Checks checks = new Checks();
 			if (checks.isAlphanumeric(login) == false || checks.isAlphanumeric(rightsToSet) == false)
 				return (false);
+			if (rightsToSet.length() != 5)
+				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
@@ -147,13 +149,15 @@ public class MAdmin
 		try
 		{
 			Checks checks = new Checks();
-			if (checks.isAlphanumeric(login) == false || checks.isNumeric(creditsToSet) == false)
+			if (checks.isAlphanumeric(login) == false || checks.isFloat(creditsToSet) == false)
 				return (false);
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/jweb", "root", "");
 			java.sql.Statement statement = connexion.createStatement();
 			
 			String sqlRequest = "";
+			float fl = Float.parseFloat(creditsToSet);
+			user.setCredit(fl);
 			sqlRequest += "UPDATE user SET credit=" + creditsToSet + " WHERE login='" + login + "';";
 			statement.executeUpdate(sqlRequest);
 		}

@@ -24,5 +24,8 @@
 			<% ++counter;
 		}
 	%>
+		<form method="POST" action="AdminManager">
+			<input type="submit" id="go_to_user" name="go_to_user_name" value="UserZONE"/>
+		</form>
 </body>
 </html>

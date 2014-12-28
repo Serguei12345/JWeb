@@ -2,7 +2,7 @@
 <%@page import="com.sdzee.bdd.MProductManager"%>
 <%@page import="com.sdzee.bdd.BoughtProduct"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="javax.swing.JOptionPane"%><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,5 +25,8 @@
 				++counter;
 			}
 		%>
+		<form method="POST" action="AdminManager">
+			<input type="submit" id="go_to_user" name="go_to_user_name" value="UserZONE"/>
+		</form>
 </body>
 </html>

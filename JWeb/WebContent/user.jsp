@@ -15,10 +15,9 @@
 <body>
 	<%
 		MConnection coreUser = (MConnection)session.getAttribute("MConnection");
-		User user = (User)coreUser.getUser();
-		Float credit = user.getCredit();
+		User user = (User)session.getAttribute("userOfSession");
 	
-		out.println("Bonjour " + user.getLogin() + ". Vous disposez de " + credit + " $."); %> <br/> 
+		out.println("Bonjour " + user.getLogin()); %> <br/> 
 	<%
 		ArrayList<ArrayList<String>> list = coreUser.getListOfArticles();
 		int counterArticle = 0;
@@ -46,8 +45,7 @@
 		}
 
 		String rights = user.getRights();
-	
-		out.println(rights);
+
 		if (rights.charAt(0) == '1')
 		{	
 	%>
@@ -55,7 +53,9 @@
 		<form method="POST" action="AdminManager">
 			<input type="submit" id="submit_admin" name="admin_begin_submit" value="AdminZONE"/>
 		</form>
-		
+	<%
+		}
+	%>
 		<form method="POST" action="ArticlesReviews">
 			<input type="submit" id="submit_articles" name="articles_submit" value="Voir les articles"/>
 		</form>
@@ -71,8 +71,5 @@
 		<form method="POST" action="ProductManager">
 			<input type="submit" id="bought_products_submit" name="bought_products_submit_name" value="Voir vos achats"/>
 		</form>
-	<%
-		}
-	%>
 </body>
 </html>

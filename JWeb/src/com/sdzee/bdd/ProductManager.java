@@ -2,6 +2,7 @@ package com.sdzee.bdd;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,6 +59,13 @@ public class ProductManager extends HttpServlet
 				session.setAttribute("MProductManager", this.mPM);
 			getServletContext().getRequestDispatcher("/boughtProducts.jsp").forward(request,response);
 		}
+		else if (request.getParameter("go_to_user_name") != null)
+		{
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/user.jsp");
+			if (dispatcher != null)
+				dispatcher.forward(request, response);
+			return ;
+		}
 		else
 		{
 			User user = new User((User)request.getSession().getAttribute("userOfSession"));
@@ -81,6 +89,7 @@ public class ProductManager extends HttpServlet
 				else if (res == 3)
 					strError = "Le nom de ce produit n'est pas valide";
 				
+				session.setAttribute("userOfSession", user);
 				session.setAttribute("strError", strError);
 				getServletContext().getRequestDispatcher("/products.jsp").forward(request,response);
 			}

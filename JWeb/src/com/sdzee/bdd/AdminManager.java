@@ -83,6 +83,7 @@ public class AdminManager extends HttpServlet
 			}
 			else if (request.getParameter("go_to_user_name") != null)
 			{
+				session.setAttribute("userOfSession", user);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/user.jsp");
 				if (dispatcher != null)
 					dispatcher.forward(request, response);
@@ -91,6 +92,7 @@ public class AdminManager extends HttpServlet
 			if (strError == "")
 				strError = "L'opération a été accomplie avec succès";
 		}
+		session.setAttribute("userOfSession", user);
 		session.setAttribute("strError", strError);
 		getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
 	}
